@@ -3,7 +3,39 @@ const mongoose = require('mongoose');
 // user.js
 
 const foodSchema = new mongoose.Schema({
-  // YOU DO: Define properties of food schema
+  name: {
+    type: String,
+    required: true,
+  },
+  quantity: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    enum: [
+      'Spice',
+      'Vegetable',
+      'Fruit',
+      'Meat',
+      'Seafood',
+      'Dairy',
+      'Grain',
+      'Baking',
+      'Canned',
+      'Frozen',
+      'Condiment',
+      'Beverage',
+      'Snack',
+      'Other'
+    ],
+    expiresAt: {
+      type: Date,
+    },
+    notes: {
+      type: String,
+    }
+  }
 });
 
 
