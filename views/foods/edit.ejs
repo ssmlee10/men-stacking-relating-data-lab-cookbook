@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit this Food</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit <%= food.name %></h1>
+    <form action="/users/<%= user._id %>/foods" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="qty">Quantity:</label>
+      <input type="text" name="qty" id="qty" />
+
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="Spice">Spice</option>
+        <option value="Vegetable">Vegetable</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Meat">Meat</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Grain">Grain</option>
+        <option value="Baking">Baking</option>
+        <option value="Canned">Canned</option>
+        <option value="Frozen">Frozen</option>
+        <option value="Condiment">Condiment</option>
+        <option value="Beverage">Beverage</option>
+        <option value="Snack">Snack</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="expiresAt">Expiration Date:</label>
+      <input type="date" id="expiresAt" name="expiresAt" />
+
+      <label for="notes">Notes:</label>
+      <textarea name="notes" id="notes"></textarea>
+      <button type="submit">Edit this Food</button>
+    </form>
+
+    
+  </body>
+</html>
