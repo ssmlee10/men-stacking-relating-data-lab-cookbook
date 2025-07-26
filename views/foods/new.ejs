@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Add a New Food</title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New Food</h1>
-    <form action="">
+    <form action="/users/<%= user._id %>/foods" method="POST">
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" />
 
@@ -17,20 +17,20 @@
 
       <label for="category">Category:</label>
       <select id="category" name="category">
-        <option value="spice">Spice</option>
-        <option value="vegetable">Vegetable</option>
-        <option value="fruit">Fruit</option>
-        <option value="meat">Meat</option>
-        <option value="seafood">Seafood</option>
-        <option value="dairy">Dairy</option>
-        <option value="grain">Grain</option>
-        <option value="baking">Baking</option>
-        <option value="canned">Canned</option>
-        <option value="frozen">Frozen</option>
-        <option value="condiment">Condiment</option>
-        <option value="beverage">Beverage</option>
-        <option value="snack">Snack</option>
-        <option value="other">Other</option>
+        <option value="Spice">Spice</option>
+        <option value="Vegetable">Vegetable</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Meat">Meat</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Grain">Grain</option>
+        <option value="Baking">Baking</option>
+        <option value="Canned">Canned</option>
+        <option value="Frozen">Frozen</option>
+        <option value="Condiment">Condiment</option>
+        <option value="Beverage">Beverage</option>
+        <option value="Snack">Snack</option>
+        <option value="Other">Other</option>
       </select>
 
       <label for="expiresAt">Expiration Date:</label>
@@ -38,8 +38,9 @@
 
       <label for="notes">Notes:</label>
       <textarea name="notes" id="notes"></textarea>
+      <button type="submit">Add New Food</button>
     </form>
 
-    <button type="submit">Add New Food</button>
+    
   </body>
 </html>

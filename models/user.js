@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // user.js
 
@@ -7,39 +7,38 @@ const foodSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  quantity: {
+  qty: {
     type: String,
     required: true,
   },
   category: {
     type: String,
     enum: [
-      'Spice',
-      'Vegetable',
-      'Fruit',
-      'Meat',
-      'Seafood',
-      'Dairy',
-      'Grain',
-      'Baking',
-      'Canned',
-      'Frozen',
-      'Condiment',
-      'Beverage',
-      'Snack',
-      'Other'
+      "Spice",
+      "Vegetable",
+      "Fruit",
+      "Meat",
+      "Seafood",
+      "Dairy",
+      "Grain",
+      "Baking",
+      "Canned",
+      "Frozen",
+      "Condiment",
+      "Beverage",
+      "Snack",
+      "Other",
     ],
-    expiresAt: {
-      type: Date,
-    },
-    notes: {
-      type: String,
-    }
-  }
+  },
+  expiresAt: {
+    type: Date,
+  },
+  notes: {
+    type: String,
+  },
 });
 
-
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -48,11 +47,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  pantry: {
-
-  }
+  pantry: [foodSchema],
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
