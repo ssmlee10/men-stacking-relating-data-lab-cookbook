@@ -3,41 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit this Food</title>
+    <title>Editing <%= food.name %></title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Edit <%= food.name %></h1>
     <form action="/users/<%= user._id %>/foods" method="POST">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" value="<%= food.name %>" />
 
       <label for="qty">Quantity:</label>
-      <input type="text" name="qty" id="qty" />
+      <input type="text" name="qty" id="qty" value="<%= food.qty %>"/>
 
       <label for="category">Category:</label>
       <select id="category" name="category">
-        <option value="Spice">Spice</option>
-        <option value="Vegetable">Vegetable</option>
-        <option value="Fruit">Fruit</option>
-        <option value="Meat">Meat</option>
-        <option value="Seafood">Seafood</option>
-        <option value="Dairy">Dairy</option>
-        <option value="Grain">Grain</option>
-        <option value="Baking">Baking</option>
-        <option value="Canned">Canned</option>
-        <option value="Frozen">Frozen</option>
-        <option value="Condiment">Condiment</option>
-        <option value="Beverage">Beverage</option>
-        <option value="Snack">Snack</option>
-        <option value="Other">Other</option>
+        <option value="Spice" <%= food.category === 'Spice' ? 'selected' : '' %>>Spice</option>
+        <option value="Vegetable" <%= food.category === 'Vegetable' ? 'selected' : '' %>>Vegetable</option>
+        <option value="Fruit" <%= food.category === 'Fruit' ? 'selected' : '' %>>Fruit</option>
+        <option value="Meat" <%= food.category === 'Meat' ? 'selected' : '' %>>Meat</option>
+        <option value="Seafood" <%= food.category === 'Seafood' ? 'selected' : '' %>>Seafood</option>
+        <option value="Dairy" <%= food.category === 'Dairy' ? 'selected' : '' %>>Dairy</option>
+        <option value="Grain" <%= food.category === 'Grain' ? 'selected' : '' %>>Grain</option>
+        <option value="Baking" <%= food.category === 'Baking' ? 'selected' : '' %>>Baking</option>
+        <option value="Canned" <%= food.category === 'Canned' ? 'selected' : '' %>>Canned</option>
+        <option value="Frozen" <%= food.category === 'Frozen' ? 'selected' : '' %>>Frozen</option>
+        <option value="Condiment" <%= food.category === 'Condiment' ? 'selected' : '' %>>Condiment</option>
+        <option value="Beverage" <%= food.category === 'Beverage' ? 'selected' : '' %>>Beverage</option>
+        <option value="Snack" <%= food.category === 'Snack' ? 'selected' : '' %>>Snack</option>
+        <option value="Other" <%= food.category === 'Other' ? 'selected' : '' %>>Other</option>
       </select>
 
       <label for="expiresAt">Expiration Date:</label>
-      <input type="date" id="expiresAt" name="expiresAt" />
+      <input type="date" name="expiresAt" value="<%= food.expiresAt ? food.expiresAt.toISOString().split('T')[0] : '' %>"
+>
 
       <label for="notes">Notes:</label>
-      <textarea name="notes" id="notes"></textarea>
+      <textarea name="notes" id="notes"><%= food.notes %></textarea>
       <button type="submit">Edit this Food</button>
     </form>
 
