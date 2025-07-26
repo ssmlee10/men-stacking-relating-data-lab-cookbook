@@ -8,7 +8,7 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Edit <%= food.name %></h1>
-    <form action="/users/<%= user._id %>/foods" method="POST">
+    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" value="<%= food.name %>" />
 
@@ -34,8 +34,7 @@
       </select>
 
       <label for="expiresAt">Expiration Date:</label>
-      <input type="date" name="expiresAt" value="<%= food.expiresAt ? food.expiresAt.toISOString().split('T')[0] : '' %>"
->
+      <input type="date" name="expiresAt" value="<%= food.expiresAt ? food.expiresAt.toISOString().split('T')[0] : '' %>">
 
       <label for="notes">Notes:</label>
       <textarea name="notes" id="notes"><%= food.notes %></textarea>
