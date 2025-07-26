@@ -11,7 +11,7 @@
     <a href="/users/<%= user._id %>/foods/new">Add a New Item</a>
     <ul>
       <% pantry.forEach((food) => { %>
-      <li><%= food.name %></li>
+      <a href="/users/<%= user._id %>/foods/<%= food._id %>"><li><%= food.name %></li></a>
       <% }); %>
     </ul>
   </body>
