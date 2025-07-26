@@ -4,14 +4,20 @@ const router = express.Router();
 const User = require('../models/user.js');
 
 // router logic will go here
-// routing to the goods index page
-router.get('/', (req, res) => {
-    res.render('foods/index.ejs');
-});
-
-// routing to new foods page
-router.get('/new', (req, res) => {
-    res.render('foods/new.ejs');
+// routing to the pantry foods index page
+router.get('/', async (req, res) => {
+  try {
+    // look up user from req.session
+    const currentUser = await User.findById(req.session.user._id);
+    console.log('pantry:', currentUser.pantry);
+    // render index.ejs, passing in all of the current user's foods as data in the context object
+    res.render('foods/index.ejs', {
+      pantry: currentUser.pantry
+    });
+  } catch(error) {
+    console.log(error);
+    res.redirect('/');
+  }
 });
 
 // creating a new food
