@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= user.username %>'s Pantry</title>
 </head>
 <body>
-    
+    <%- include ('../partials/_navbar.ejs') %>
+    <h1><%= user.username %>'s Pantry</h1>
+    <ul>
+        <% user.pantry.forEach(food => { %>
+            <p><b><%= food.name %></b></p>
+            <li>Category: <%= food.category %></li>
+            <li>
+            Expiration Date: <%= new Date(food.expiresAt).toLocaleDateString({ 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+                }); %>
+            </li>
+            <li>Notes: <%= food.notes %></li>
+        <% }); %>
+    </ul>
 </body>
 </html>

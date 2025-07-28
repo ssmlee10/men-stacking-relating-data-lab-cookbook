@@ -11,9 +11,15 @@ router.get('/', async (req, res) => {
     });
 });
 
-// GET to individual users' pantries
-router.get('/', async (req, res) => {
-    
+// GET to individual users' pantries on show.ejs
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).populate('pantry');
+        res.render('users/show.ejs', { user });
+    } catch(error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
 
 module.exports = router;
