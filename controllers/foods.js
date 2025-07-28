@@ -41,7 +41,7 @@ router.get('/:foodId', async (req, res) => {
   try {
     // look up the user from req.session
     const currentUser = await User.findById(req.session.user._id);
-    // find the food by the foodID supplied from req.params
+    // find the food by the foodId supplied from req.params
     const food = currentUser.pantry.id(req.params.foodId);
     // render the show view, passing the food data into the context object
     res.render('foods/show.ejs', {

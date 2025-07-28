@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Our Community</title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+   <h1>Explore All Users' Pantries!</h1>
+
+    <% users.forEach(user => {%>
+        <li>
+            <a href="/users/<%= user._id %>">User: <%= user.username %></a>
+        </li>
+    <% }); %>
+
+
+</body>
+</html>

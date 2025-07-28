@@ -10,11 +10,11 @@ const session = require('express-session');
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 
-// imports logic from auth.js in controllers
+// controllers (auth, foods, users)
 const authController = require('./controllers/auth.js');
-
-// foods controller
 const foodsController = require('./controllers/foods.js');
+const usersController = require('./controllers/users.js');
+
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -27,6 +27,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+
 // app.use(morgan('dev'));
 app.use(
   session({
@@ -46,6 +47,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use(passUserToView);
+app.use('/users', usersController);
 app.use('/users/:userId/foods', foodsController);
 
 
